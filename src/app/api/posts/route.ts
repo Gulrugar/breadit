@@ -19,9 +19,7 @@ export async function GET(req: Request) {
       },
     });
 
-    followedCommunitiesIds = followedCommunities.map(
-      ({ subreddit }) => subreddit.id
-    );
+    followedCommunitiesIds = followedCommunities.map((sub) => sub.subreddit.id);
   }
 
   try {
@@ -32,9 +30,9 @@ export async function GET(req: Request) {
         subredditName: z.string().nullish().optional(),
       })
       .parse({
+        subredditName: url.searchParams.get("subredditName"),
         limit: url.searchParams.get("limit"),
         page: url.searchParams.get("page"),
-        subredditName: url.searchParams.get("subredditName"),
       });
 
     let whereClause = {};
@@ -57,7 +55,7 @@ export async function GET(req: Request) {
 
     const posts = await db.post.findMany({
       take: parseInt(limit),
-      skip: (parseInt(page) - 1) * parseInt(limit),
+      skip: (parseInt(page) - 1) * parseInt(limit), // skip should start from 0 for page 1
       orderBy: {
         createdAt: "desc",
       },
@@ -72,12 +70,6 @@ export async function GET(req: Request) {
 
     return new Response(JSON.stringify(posts));
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return new Response("Invalid request data passed", { status: 422 });
-    }
-
-    return new Response("Could not fetch more posts", {
-      status: 500,
-    });
+    return new Response("Could not fetch posts", { status: 500 });
   }
 }
