@@ -58,7 +58,15 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
           blocks: [],
         },
         tools: {
-          header: Header,
+          header: {
+            // @ts-ignore
+            class: Header,
+            config: {
+              placeholder: "Enter a header",
+              levels: [1, 2, 3, 4],
+              defaultLevel: 1,
+            },
+          },
           linkTool: {
             class: LinkTool,
             config: {
@@ -82,7 +90,13 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
               },
             },
           },
-          list: List,
+          list: {
+            class: List,
+            inlineToolbar: true,
+            config: {
+              defaultStyle: "unordered",
+            },
+          },
           code: Code,
           inlineCode: InlineCode,
           embed: Embed,

@@ -20,6 +20,20 @@ const style = {
     fontSize: "0.875rem",
     lineHeight: "1.25rem",
   },
+  header: {
+    h1: {
+      fontSize: "2rem",
+    },
+    h2: {
+      fontSize: "1.5rem",
+    },
+    h3: {
+      fontSize: "1.25rem",
+    },
+    h4: {
+      fontSize: "1.125rem",
+    },
+  },
 };
 
 function CustomImageRenderer({ data }: any) {
@@ -40,9 +54,30 @@ function CustomCodeRenderer({ data }: any) {
   );
 }
 
+function customListRenderer({ data }: any) {
+  return (
+    <>
+      {data?.style === "unordered" ? (
+        <ol className="list-disc ml-4">
+          {data.items.map((item: any) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+      ) : (
+        <ul className="list-decimal ml-4">
+          {data.items.map((item: any) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
 const renderers = {
   image: CustomImageRenderer,
   code: CustomCodeRenderer,
+  list: customListRenderer,
 };
 
 const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
