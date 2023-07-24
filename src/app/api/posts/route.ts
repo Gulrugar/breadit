@@ -19,7 +19,9 @@ export async function GET(req: Request) {
       },
     });
 
-    followedCommunitiesIds = followedCommunities.map((sub) => sub.subreddit.id);
+    followedCommunitiesIds = followedCommunities?.map(
+      (sub) => sub.subreddit.id
+    );
   }
 
   try {

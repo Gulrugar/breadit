@@ -20,7 +20,7 @@ const CustomFeed = async () => {
     where: {
       subreddit: {
         name: {
-          in: followedCommunities.map((sub) => sub.subreddit.name),
+          in: followedCommunities?.map((sub) => sub.subreddit.name),
         },
       },
     },
