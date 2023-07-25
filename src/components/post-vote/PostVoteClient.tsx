@@ -16,12 +16,14 @@ interface PostVoteClientProps {
   postId: string;
   initialVotesAmt: number;
   initialVote?: VoteType | null;
+  collapsed?: boolean;
 }
 
 const PostVoteClient: FC<PostVoteClientProps> = ({
   postId,
   initialVotesAmt,
   initialVote,
+  collapsed = false,
 }) => {
   const { loginToast } = useCustomToast();
   const [votesAmt, setVotesAmt] = useState<number>(initialVotesAmt);
@@ -75,7 +77,11 @@ const PostVoteClient: FC<PostVoteClientProps> = ({
   });
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-0 pr-6 sm:w-20 pb-4 sm:pb-0">
+    <div
+      className={`flex ${
+        collapsed ? "sm:flex-col" : "flex-col"
+      } gap-4 sm:gap-0 pr-6 sm:w-20 pb-4 sm:pb-0`}
+    >
       <Button
         onClick={() => vote("UP")}
         size="sm"

@@ -63,6 +63,7 @@ const page = async ({ params }: PageProps) => {
                 },
               });
             }}
+            collapsed={true}
           />
         </Suspense>
 

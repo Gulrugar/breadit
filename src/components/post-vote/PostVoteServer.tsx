@@ -8,6 +8,7 @@ interface PostVoteServerProps {
   initialVotesAmt?: number;
   initialVote?: Vote["type"] | null;
   getData?: () => Promise<(Post & { votes: Vote[] }) | null>;
+  collapsed?: boolean;
 }
 
 const PostVoteServer = async ({
@@ -15,6 +16,7 @@ const PostVoteServer = async ({
   initialVotesAmt,
   initialVote,
   getData,
+  collapsed = false,
 }: PostVoteServerProps) => {
   const session = await getAuthSession();
 
@@ -43,6 +45,7 @@ const PostVoteServer = async ({
 
   return (
     <PostVoteClient
+      collapsed={collapsed}
       postId={postId}
       initialVotesAmt={_votesAmt}
       initialVote={_currentVote}
