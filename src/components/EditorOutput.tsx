@@ -59,14 +59,14 @@ function customListRenderer({ data }: any) {
     <>
       {data?.style === "unordered" ? (
         <ol className="list-disc ml-4">
-          {data.items.map((item: any) => (
-            <li>{item}</li>
+          {data.items.map((item: any, index: number) => (
+            <li key={index}>{item}</li>
           ))}
         </ol>
       ) : (
         <ul className="list-decimal ml-4">
-          {data.items.map((item: any) => (
-            <li>{item}</li>
+          {data.items.map((item: any, index: number) => (
+            <li key={index}>{item}</li>
           ))}
         </ul>
       )}
