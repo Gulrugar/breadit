@@ -8,7 +8,7 @@ Breadit is a clone of the popular social media website Reddit. Just like Reddit,
 
 ![website-complete](https://github.com/Gulrugar/breadit/assets/105955316/291cc43b-7e41-48a0-8903-2c92bd839cce)
 
-Key Features:
+### Key Features:
 
 1. Posts support image uploads, link sharing, embedding twitter posts, etc.
 2. A search bar for searching for created communities
@@ -19,7 +19,7 @@ More 🔽
 
 ![website-features-1](https://github.com/Gulrugar/breadit/assets/105955316/8916f0bd-2ad8-45dd-adf9-bddd3add80d6)
 
-Key Features Continued:
+### Key Features Continued:
 
 5. Replying to posts
 6. Voting for posts
