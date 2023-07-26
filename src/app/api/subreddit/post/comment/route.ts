@@ -15,11 +15,16 @@ export async function PATCH(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
+    console.log("postId", postId);
+    console.log("replyToId", replyToId);
+    console.log("text", text);
+    console.log("session.user.id", session.user.id);
+
     await db.comment.create({
       data: {
-        text,
         postId,
         authorId: session.user.id,
+        text,
         replyToId,
       },
     });

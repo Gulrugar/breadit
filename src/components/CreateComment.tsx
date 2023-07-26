@@ -43,6 +43,8 @@ const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
         }
       }
 
+      console.log(err);
+
       return toast({
         title: "There was problem",
         description: "Something went wrong, please try again",

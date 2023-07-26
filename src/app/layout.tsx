@@ -3,6 +3,7 @@ import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Toaster";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
+import "@/styles/editor.css";
 import { Inter } from "next/font/google";
 
 export const metadata = {
